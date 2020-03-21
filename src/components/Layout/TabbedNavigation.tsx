@@ -1,9 +1,5 @@
 import { BottomNavigation, BottomNavigationAction } from "@material-ui/core"
-import {
-    FavoriteBorderOutlined,
-    LocationOnOutlined,
-    PersonOutlined
-} from "@material-ui/icons"
+import { FavoriteBorderOutlined, LocationOnOutlined, PersonOutlined } from "@material-ui/icons"
 import React, { FC } from "react"
 import { useAppDispatch, useAppState } from "../../hooks/useReduxState"
 import { routePaths } from "../../routes"
@@ -15,10 +11,7 @@ export const TabbedNavigation: FC = () => {
     const handleClick = (route: string) => () => dispatch(push(route))
 
     return (
-        <BottomNavigation
-            value={pathname}
-            className="sticky bottom-0 w-full text-black"
-        >
+        <BottomNavigation value={pathname} className="sticky bottom-0 w-full text-black">
             <BottomNavigationAction
                 className="text-black"
                 label="Favorites"
