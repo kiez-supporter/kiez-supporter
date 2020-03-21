@@ -3,9 +3,9 @@ import GoogleMapReact from "google-map-react"
 import { useGeolocation } from "../../hooks/useGeolocation"
 
 export const Map: FC = () => {
-    let userGeolocation = useGeolocation()
+    const userGeolocation = useGeolocation()
     return (
-        <div style={{ height: "100vh", width: "100%" }}>
+        <div className="w-full h-full">
             <GoogleMapReact
                 bootstrapURLKeys={{
                     key: "AIzaSyC2hJYITb8r-BkWQil21x7KFT3wJe8NP5E"
@@ -15,7 +15,7 @@ export const Map: FC = () => {
                     lng: userGeolocation.longitude
                 }}
                 defaultZoom={11}
-            ></GoogleMapReact>
+            />
         </div>
     )
 }
