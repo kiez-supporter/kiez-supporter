@@ -17,9 +17,14 @@
 import React from "react"
 import { Redirect, Route, Switch } from "react-router"
 import { Home } from "../pages/Home"
+import { Layout } from "../components/Layout/Layout"
+import { Favorites } from "../pages/Favorites"
+import { Profile } from "../pages/Profile"
 
 interface RoutePaths {
     home: () => string
+    favorites: () => string
+    profile: () => string
 }
 
 interface RouteInfo {
@@ -28,7 +33,9 @@ interface RouteInfo {
 }
 
 export const routePaths: RoutePaths = Object.freeze<RoutePaths>({
-    home: () => "/"
+    home: () => "/",
+    favorites: () => "/favorites",
+    profile: () => "/profile"
 })
 
 export const routeMap = (() => {
@@ -36,7 +43,21 @@ export const routeMap = (() => {
         [
             routePaths.home(),
             {
-                component: () => <Home></Home>,
+                component: () => <Home />,
+                exact: true
+            }
+        ],
+        [
+            routePaths.favorites(),
+            {
+                component: () => <Favorites />,
+                exact: true
+            }
+        ],
+        [
+            routePaths.profile(),
+            {
+                component: () => <Profile />,
                 exact: true
             }
         ]
