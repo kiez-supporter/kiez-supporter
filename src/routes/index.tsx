@@ -16,9 +16,8 @@
 
 import React from "react"
 import { Redirect, Route, Switch } from "react-router"
-import { Home } from "../pages/Home"
-import { Layout } from "../components/Layout/Layout"
 import { Favorites } from "../pages/Favorites"
+import { Home } from "../pages/Home"
 import { Profile } from "../pages/Profile"
 
 interface RoutePaths {
