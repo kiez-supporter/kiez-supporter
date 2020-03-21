@@ -1,13 +1,18 @@
 import React, { FC } from "react"
+import { useAppDispatch } from "../../hooks/useReduxState"
+import { resetModal } from "../../actions/UiActions"
 export interface ModalProps {
     name?: string
     zip?: number
     shops?: number
     progress?: number
     links?: string[]
-    close?: () => void
 }
-const Modal: FC<ModalProps> = ({ name, zip, shops, progress, links, close }: ModalProps) => {
+const Modal: FC<ModalProps> = ({ name, zip, shops, progress, links }: ModalProps) => {
+    const dispatch = useAppDispatch()
+
+    const handleClose = () => dispatch(resetModal())
+
     return (
         <div
             id="modal"
@@ -15,7 +20,7 @@ const Modal: FC<ModalProps> = ({ name, zip, shops, progress, links, close }: Mod
                 "hidden"}`}
         >
             <div className="absolute top-0 right-0 p-2">
-                <button onClick={close} className="font-bold">
+                <button onClick={handleClose} className="font-bold">
                     X
                 </button>
             </div>
