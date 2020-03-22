@@ -22,6 +22,42 @@ export const Map = withGoogleMap<MapProps>(({ data }) => {
 
     const handleOpen = (modal: ModalProps) => () => dispatch(setModal(modal))
 
+    const between = (x: number, min: number, max: number): boolean => x >= min && x <= max
+
+    const getColor = (progress: number): string => {
+        if (between(progress, 0, 10)) {
+            return "#C53030"
+        }
+        if (between(progress, 10, 20)) {
+            return "#E53E3E"
+        }
+        if (between(progress, 20, 30)) {
+            return "#F56565"
+        }
+        if (between(progress, 30, 40)) {
+            return "#FC8181"
+        }
+        if (between(progress, 40, 50)) {
+            return "#FEB2B2"
+        }
+        if (between(progress, 50, 60)) {
+            return "#C6F6D5"
+        }
+        if (between(progress, 60, 70)) {
+            return "#9AE6B4"
+        }
+        if (between(progress, 70, 80)) {
+            return "#68D391"
+        }
+        if (between(progress, 80, 90)) {
+            return "#48BB78"
+        }
+        if (between(progress, 90, 100)) {
+            return "#38A169"
+        }
+        return "#C53030"
+    }
+
     return (
         <div className="w-full h-full">
             <GoogleMap
@@ -43,7 +79,7 @@ export const Map = withGoogleMap<MapProps>(({ data }) => {
                         key={index}
                         paths={path.polygon}
                         options={{
-                            fillColor: "#476a47",
+                            fillColor: getColor(path.progress || Math.floor(Math.random() * (100 - 0 + 1) + 0)),
                             fillOpacity: 0.4,
                             strokeColor: "#000",
                             strokeOpacity: 1,
