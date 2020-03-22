@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef } from "react"
 import {
     GoogleMap,
     Marker,
@@ -27,9 +27,21 @@ interface MapProps {
 export const Map = withScriptjs<MapProps & WithGoogleMapProps & WithScriptjsProps>(
     withGoogleMap(({ data }) => {
         const userGeolocation = useGeolocation()
+        const map = useRef<GoogleMap>(null)
         const dispatch = useAppDispatch()
 
-        const handleOpen = (modal: ModalProps) => () => dispatch(setModal(modal))
+        const handleOpen = (modal: ModalProps) => () => {
+            // const bounds = map.current?.getBounds()
+            // console.log({
+            //     centerlat: bounds?.getCenter().lat(),
+            //     centerlng: bounds?.getCenter().lng(),
+            //     northeastlat: bounds?.getNorthEast().lat(),
+            //     northeastlng: bounds?.getNorthEast().lng(),
+            //     southeastlat: bounds?.getSouthWest().lat(),
+            //     southeastlng: bounds?.getSouthWest().lng()
+            // })
+            dispatch(setModal(modal))
+        }
 
         const between = (x: number, min: number, max: number): boolean => x >= min && x <= max
 
@@ -74,10 +86,11 @@ export const Map = withScriptjs<MapProps & WithGoogleMapProps & WithScriptjsProp
                         lat: userGeolocation.latitude,
                         lng: userGeolocation.longitude
                     }}
+                    defaultZoom={11}
                     options={{
-                        fullscreenControl: false,
-                        zoom: 11
+                        fullscreenControl: false
                     }}
+                    ref={map}
                 >
                     <Marker
                         icon="https://www.robotwoods.com/dev/misc/bluecircle.png"
