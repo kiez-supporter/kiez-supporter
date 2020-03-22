@@ -15,11 +15,10 @@
  */
 
 import React from "react"
-import { Redirect, Route, Switch, RouteComponentProps } from "react-router"
-import { Search } from "../pages/Search"
+import { Redirect, Route, RouteComponentProps, Switch } from "react-router"
 import { Home, HomeProps } from "../pages/Home"
 import { Profile } from "../pages/Profile"
-import { Position } from "../hooks/useGeolocation"
+import { Search } from "../pages/Search"
 
 interface RoutePaths {
     home: () => string
