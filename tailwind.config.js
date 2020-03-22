@@ -11,11 +11,15 @@ module.exports = {
                 0.5: "0.125rem",
                 7: "1.625rem",
                 13: "3.125rem",
-                14: "3.5rem"
+                14: "3.5rem",
+                34: "7.5rem"
             },
             fontSize: {},
             borderRadius: {
                 xl: "0.875rem"
+            },
+            marginTop: {
+                34: "9rem"
             },
             maxWidth: {
                 10: "10%",

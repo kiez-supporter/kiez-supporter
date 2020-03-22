@@ -19,11 +19,13 @@ import { Redirect, Route, RouteComponentProps, Switch } from "react-router"
 import { Home, HomeProps } from "../pages/Home"
 import { Profile } from "../pages/Profile"
 import { Search } from "../pages/Search"
+import { Contact } from "../pages/Contact"
 
 interface RoutePaths {
     home: () => string
     search: () => string
     profile: () => string
+    contact: () => string
 }
 
 interface RouteInfo {
@@ -34,7 +36,8 @@ interface RouteInfo {
 export const routePaths: RoutePaths = Object.freeze<RoutePaths>({
     home: () => "/",
     search: () => "/search",
-    profile: () => "/profile"
+    profile: () => "/profile",
+    contact: () => "/contact"
 })
 
 export const routeMap = (() => {
@@ -54,6 +57,13 @@ export const routeMap = (() => {
             routePaths.search(),
             {
                 component: () => <Search />,
+                exact: true
+            }
+        ],
+        [
+            routePaths.contact(),
+            {
+                component: () => <Contact />,
                 exact: true
             }
         ],

@@ -1,5 +1,5 @@
 import { BottomNavigation, BottomNavigationAction } from "@material-ui/core"
-import { SearchOutlined, LocationOnOutlined, PersonOutlined } from "@material-ui/icons"
+import { LocationOnOutlined, InfoOutlined, ContactMailOutlined, SearchOutlined } from "@material-ui/icons"
 import React, { FC } from "react"
 import { useAppDispatch, useAppState } from "../../hooks/useReduxState"
 import { routePaths } from "../../routes"
@@ -22,16 +22,22 @@ export const TabbedNavigation: FC = () => {
             <BottomNavigationAction
                 className="text-black"
                 label="Kiez"
-                value={routePaths.home()}
                 onClick={handleClick(routePaths.home())}
                 icon={<LocationOnOutlined />}
             />
+            {/* <BottomNavigationAction
+                className="text-black"
+                label="Info"
+                value={routePaths.home()}
+                onClick={handleClick(routePaths.home())}
+                icon={<InfoOutlined />}
+            /> */}
             <BottomNavigationAction
                 className="text-black"
-                label="Profile"
-                value={routePaths.profile()}
-                onClick={handleClick(routePaths.profile())}
-                icon={<PersonOutlined />}
+                label="Kontakt"
+                value={routePaths.contact()}
+                onClick={handleClick(routePaths.contact())}
+                icon={<ContactMailOutlined />}
             />
         </BottomNavigation>
     )

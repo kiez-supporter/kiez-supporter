@@ -20,7 +20,8 @@ interface MapProps {
         name: string
         shops?: number
         progress?: number
-        links?: string[]
+        population: number
+        link?: string[]
         polygon: { lat: number; lng: number }[]
     }[]
 }
@@ -80,6 +81,8 @@ export const Map = withScriptjs<MapProps & WithGoogleMapProps & WithScriptjsProp
             return "#C53030"
         }
 
+        const calcProgress = (progress: number): number => (progress * 100) / 36000
+
         return (
             <div className="w-full h-full">
                 <GoogleMap
@@ -106,13 +109,13 @@ export const Map = withScriptjs<MapProps & WithGoogleMapProps & WithScriptjsProp
                                 name: path.name,
                                 zip: path.zip,
                                 shops: path.shops,
-                                progress: path.progress,
-                                links: path.links
+                                progress: calcProgress(path.population),
+                                links: path.link
                             })}
                             key={index}
                             paths={path.polygon}
                             options={{
-                                fillColor: getColor(path.progress || Math.floor(Math.random() * (100 - 0 + 1) + 0)),
+                                fillColor: getColor(calcProgress(path.population)),
                                 fillOpacity: 0.4,
                                 strokeColor: "#000",
                                 strokeOpacity: 1,
