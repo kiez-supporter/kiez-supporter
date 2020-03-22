@@ -14,3 +14,7 @@
  */
 
 export enum AuthType {}
+
+export enum UiType {
+    setModal = "UI/SET/MODAL"
+}
