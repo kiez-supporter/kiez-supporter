@@ -3,8 +3,13 @@ import { Map } from "../components/map/Map"
 import Modal from "../components/modal/Modal"
 import { useAppState } from "../hooks/useReduxState"
 import json from "../csvjson.json"
+import { Position } from "../hooks/useGeolocation"
 
-export const Home: FC = () => {
+export interface HomeProps {
+    position: Position
+}
+
+export const Home: FC<HomeProps> = ({ position }) => {
     const modal = useAppState(state => state.ui.modal)
     return (
         <div className="h-full rounded">
@@ -20,6 +25,7 @@ export const Home: FC = () => {
                 mapElement={<div className="h-full" />}
                 loadingElement={<div className="h-full" />}
                 data={json}
+                position={position}
                 googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2hJYITb8r-BkWQil21x7KFT3wJe8NP5E"
             />
         </div>

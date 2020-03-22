@@ -15,10 +15,11 @@
  */
 
 import React from "react"
-import { Redirect, Route, Switch } from "react-router"
-import { Favorites } from "../pages/Favorites"
-import { Home } from "../pages/Home"
+import { Redirect, Route, Switch, RouteComponentProps } from "react-router"
+import { Search } from "../pages/Search"
+import { Home, HomeProps } from "../pages/Home"
 import { Profile } from "../pages/Profile"
+import { Position } from "../hooks/useGeolocation"
 
 interface RoutePaths {
     home: () => string
@@ -42,14 +43,18 @@ export const routeMap = (() => {
         [
             routePaths.home(),
             {
-                component: () => <Home />,
+                component: ({ location }: RouteComponentProps<{}, {}, HomeProps>) => {
+                    return (
+                        <Home position={location?.state?.position || { latitude: 52.520008, longitude: 13.404954 }} />
+                    )
+                },
                 exact: true
             }
         ],
         [
             routePaths.search(),
             {
-                component: () => <Favorites />,
+                component: () => <Search />,
                 exact: true
             }
         ],

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-interface Position {
+export interface Position {
     latitude: number
     longitude: number
 }

@@ -9,11 +9,12 @@ import {
     WithScriptjsProps
 } from "react-google-maps"
 import { setModal } from "../../actions/UiActions"
-import { useGeolocation } from "../../hooks/useGeolocation"
+import { useGeolocation, Position } from "../../hooks/useGeolocation"
 import { useAppDispatch } from "../../hooks/useReduxState"
 import { ModalProps } from "../modal/Modal"
 
 interface MapProps {
+    position: Position
     data: {
         zip: number
         name: string
@@ -25,7 +26,7 @@ interface MapProps {
 }
 
 export const Map = withScriptjs<MapProps & WithGoogleMapProps & WithScriptjsProps>(
-    withGoogleMap(({ data }) => {
+    withGoogleMap(({ data, position }) => {
         const userGeolocation = useGeolocation()
         const map = useRef<GoogleMap>(null)
         const dispatch = useAppDispatch()
@@ -83,8 +84,8 @@ export const Map = withScriptjs<MapProps & WithGoogleMapProps & WithScriptjsProp
             <div className="w-full h-full">
                 <GoogleMap
                     defaultCenter={{
-                        lat: userGeolocation.latitude,
-                        lng: userGeolocation.longitude
+                        lat: position.latitude,
+                        lng: position.longitude
                     }}
                     defaultZoom={11}
                     options={{
