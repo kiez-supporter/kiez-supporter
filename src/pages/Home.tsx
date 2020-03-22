@@ -15,7 +15,13 @@ export const Home: FC = () => {
                 progress={modal?.progress}
                 links={modal?.links}
             />
-            <Map containerElement={<div className="h-full" />} mapElement={<div className="h-full" />} data={json} />
+            <Map
+                containerElement={<div className="h-full" />}
+                mapElement={<div className="h-full" />}
+                loadingElement={<div className="h-full" />}
+                data={json}
+                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2hJYITb8r-BkWQil21x7KFT3wJe8NP5E"
+            />
         </div>
     )
 }

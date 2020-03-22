@@ -12,16 +12,14 @@ export const useGeolocation = (): Position => {
         longitude: 13.404954
     })
 
-    useEffect((): void => {
+    useEffect(() => {
         navigator.geolocation.getCurrentPosition(onEvent)
     }, [])
 
-    const onEvent = (event: {
-        coords: { latitude: any; longitude: any }
-    }): void => {
+    const onEvent = ({ coords: { latitude, longitude } }: { coords: Position }): void => {
         setState({
-            latitude: event.coords.latitude,
-            longitude: event.coords.longitude
+            latitude,
+            longitude
         })
     }
     return state
