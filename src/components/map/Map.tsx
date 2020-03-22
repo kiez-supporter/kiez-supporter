@@ -80,7 +80,7 @@ export const Map = withScriptjs<MapProps & WithGoogleMapProps & WithScriptjsProp
                             key={index}
                             paths={path.polygon}
                             options={{
-                                fillColor: getColor(calcProgress(path.population), true),
+                                fillColor: getColor(calcProgress(Math.trunc(path.population || 0)), true),
                                 fillOpacity: 0.4,
                                 strokeColor: "#000",
                                 strokeOpacity: 1,
