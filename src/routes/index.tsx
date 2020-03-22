@@ -22,7 +22,7 @@ import { Profile } from "../pages/Profile"
 
 interface RoutePaths {
     home: () => string
-    favorites: () => string
+    search: () => string
     profile: () => string
 }
 
@@ -33,7 +33,7 @@ interface RouteInfo {
 
 export const routePaths: RoutePaths = Object.freeze<RoutePaths>({
     home: () => "/",
-    favorites: () => "/favorites",
+    search: () => "/search",
     profile: () => "/profile"
 })
 
@@ -47,7 +47,7 @@ export const routeMap = (() => {
             }
         ],
         [
-            routePaths.favorites(),
+            routePaths.search(),
             {
                 component: () => <Favorites />,
                 exact: true
@@ -65,9 +65,7 @@ export const routeMap = (() => {
     const routeList = [...websiteRoutes]
 
     return routeList
-})().map(([path, { component, exact }]) => (
-    <Route key={path} path={path} render={component} exact={exact} />
-))
+})().map(([path, { component, exact }]) => <Route key={path} path={path} render={component} exact={exact} />)
 
 export const Routes = () => {
     return (

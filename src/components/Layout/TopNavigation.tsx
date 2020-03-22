@@ -9,9 +9,9 @@ export const TopNavigation = () => {
     const handleClick = (route: string) => () => dispatch(push(route))
 
     return (
-        <div className="absolute top-0 z-70 p-5">
+        <div className=" z-70 px-2 py-2">
             <button onClick={handleClick(routePaths.home())} value={routePaths.home()}>
-                <img src={logo} alt="Kiez Support Logo" title="Kiez Support Logo" className="w-48" />
+                <img src={logo} alt="Kiez Support Logo" title="Kiez Support Logo" className="w-20" />
             </button>
         </div>
     )

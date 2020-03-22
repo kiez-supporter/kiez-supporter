@@ -53,14 +53,16 @@ module.exports = {
             gridTemplateRows: {
                 8: "repeat(8, minmax(0, 1fr))",
                 10: "repeat(10, minmax(0, 1fr))",
-                // Complex site-specific row configuration
-                layout: "200px minmax(900px, 1fr) 100px"
+                11: "repeat(11, minmax(0, 1fr))",
+                layout: "fit-content(100px) repeat(10, minmax(0, 1fr)) fit-content(100px)"
             },
             gridRow: {
                 "span-7": "span 7 / span 7",
                 "span-8": "span 8 / span 8",
                 "span-9": "span 9 / span 9",
-                "span-10": "span 10 / span 10"
+                "span-10": "span 10 / span 10",
+                "span-11": "span 11 / span 11",
+                "span-12": "span 12 / span 12"
             }
         }
     },
